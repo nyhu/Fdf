@@ -86,6 +86,7 @@ char		*ft_parse_file(char	*file, t_fdf *f)
 		err = "fdf: malloc error";
 	else 
 		err = ft_split_lines(f, tab);
+	ft_strtabfree(tab);
 	close(fd);
 	return (err);
 }
