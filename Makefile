@@ -11,7 +11,10 @@ OS = $(shell uname -s)
 MC = $(foreach L, $(LIB), make -C $(L) ;)
 MCA = $(foreach L, $(LIB), make -C $(L) $@;)
 LIB = libft
-SRC = main.c
+SRC = main.c \
+	free.c \
+	parse.c \
+	win_fill.c
 
 ifeq ($(OS), Linux)
 	FLAGS += -D LINUX
