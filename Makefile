@@ -5,7 +5,7 @@ FLAGS = -Wall -Wextra -Werror
 SRCS = $(foreach S, $(SRC), srcs/$(S))
 OBJ = $(SRCS:.c=.o)
 TERMCAPS = -lm -lncurses
-MLX = -lX11 -lXext -lmlx
+MLX = -lX11 -lXext -lmlx -lm
 HEAD = -I libft/includes -I includes
 OS = $(shell uname -s)
 MC = $(foreach L, $(LIB), make -C $(L) ;)

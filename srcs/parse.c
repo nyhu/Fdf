@@ -48,8 +48,9 @@ static char	*ft_split_lines(t_fdf *f, char **tab)
 	int		i;
 
 	i = 0;
-	if (-1 == (f->max.y = ft_strtablen(tab))
-		|| !(f->map = (t_dot **)ft_memalloc(sizeof(t_dot *) * (f->max.y + 1))))
+	if (0 >= (f->max.y = ft_strtablen(tab)))
+		return ("fdf: map error");
+	else if (!(f->map = (t_dot **)ft_memalloc(sizeof(t_dot *) * (f->max.y + 1))))
 		return ("fdf: malloc error");
 	if (!(t = ft_strsplit(tab[i], ' ')))
 		return ("fdf: malloc error");
@@ -84,8 +85,8 @@ char		*ft_parse_file(char	*file, t_fdf *f)
 	else if (!(f->title = file)
 		|| !(tab = ft_read_file(fd, line)))
 		err = "fdf: malloc error";
-	else 
-		err = ft_split_lines(f, tab);
+	else if (!(err = ft_split_lines(f, tab)) && !(f->max.x))
+		err = "fdf: map error";
 	ft_strtabfree(tab);
 	close(fd);
 	return (err);

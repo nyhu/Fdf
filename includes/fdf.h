@@ -6,6 +6,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 # include "libft.h"
 
 typedef struct	s_c
@@ -40,8 +41,6 @@ typedef struct	s_fdf
 	int			endian;
 	char		*title;
 	t_dot		**map;
-	t_c			cent;
-	t_c			moy;
 	t_c			max;
 	int			min;
 	t_conf		cf;
