@@ -5,8 +5,6 @@ static void	ft_dot_place(t_fdf *f, t_dot *d)
 	d->p.x = f->cf.margin.x + ((d->c.x - d->c.y) * f->cf.space.x / 2);
 	d->p.y = f->cf.margin.y + ((d->c.x + d->c.y) * f->cf.space.y / 2);
 	d->p.y -= d->c.z * f->cf.space.z;
-	dprintf(1,"cx = %d, cy = %d, ", d->c.x, d->c.y);
-	dprintf(1,"px = %d, py = %d\n", d->p.x, d->p.y);
 }
 
 static void	ft_print_line(t_fdf *f, t_dot *d1, t_dot *d2)

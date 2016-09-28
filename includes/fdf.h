@@ -9,6 +9,13 @@
 # include <math.h>
 # include "libft.h"
 
+typedef struct	s_cd
+{
+	double		x;
+	double		y;
+	double		z;
+}				t_cd;
+
 typedef struct	s_c
 {
 	int			x;
@@ -19,14 +26,14 @@ typedef struct	s_c
 typedef struct	s_dot
 {
 	t_c			c;
-	t_c			p;
+	t_cd		p;
 	int			color;
 }				t_dot;
 
 typedef struct	s_conf
 {
-	t_c			margin;
-	t_c			space;
+	t_cd		margin;
+	t_cd		space;
 }				t_conf;
 
 typedef struct	s_fdf
