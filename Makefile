@@ -12,9 +12,7 @@ MC = $(foreach L, $(LIB), make -C $(L) ;)
 MCA = $(foreach L, $(LIB), make -C $(L) $@;)
 LIB = libft
 SRC = main.c \
-	free.c \
-	parse.c \
-	win_fill.c
+	free.c parse.c win_fill.c utils.c img_work.c config.c
 
 ifeq ($(OS), Linux)
 	FLAGS += -D LINUX
