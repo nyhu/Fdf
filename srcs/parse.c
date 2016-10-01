@@ -24,12 +24,11 @@ static char	*ft_fill_dots(t_fdf *f, char **t, int i)
 	int		j;
 
 	j = -1;
-	while (++j < f->max.x)
+	while (t[++j] && j <= (f->max.x + 48))
 	{
+		f->map[i][j].exist = 1;
 		f->map[i][j].c.x = j;
 		f->map[i][j].c.y = i;
-		if (!t[j])
-			return ("fdf: map error");
 		f->map[i][j].c.z = ft_atoi(t[j]);
 		if (f->map[i][j].c.z > f->max.z)
 			f->max.z = f->map[i][j].c.z;
@@ -50,12 +49,12 @@ static char	*ft_split_lines(t_fdf *f, char **tab)
 	i = 0;
 	if (0 >= (f->max.y = ft_strtablen(tab)))
 		return ("fdf: map error");
-	else if (!(f->map = (t_dot **)ft_memalloc(sizeof(t_dot *) * (f->max.y + 1))))
+	else if (!(f->map = (t_dot **)ft_memalloc(sizeof(t_dot *) * (f->max.y))))
 		return ("fdf: malloc error");
 	if (!(t = ft_strsplit(tab[i], ' ')))
 		return ("fdf: malloc error");
 	f->max.x = ft_strtablen(t);
-	while ((f->map[i] = (t_dot *)ft_memalloc(sizeof(t_dot) * (f->max.x))))
+	while ((f->map[i] = (t_dot *)ft_memalloc(sizeof(t_dot) * (f->max.x + 50))))
 	{
 		if ((err = ft_fill_dots(f, t, i)))
 		{

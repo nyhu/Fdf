@@ -9,7 +9,7 @@ void	ft_run_dot(t_fdf *f, void (*ft)(t_fdf *f, t_dot *dot))
 	while (++i < f->max.y)
 	{
 		j= -1;
-		while (++j < f->max.x)
+		while (f->map[i][++j].exist)
 			ft(f, &(f->map[i][j]));
 	}
 }

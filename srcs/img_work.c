@@ -1,5 +1,10 @@
 #include "fdf.h"
 
+void	ft_img_reset(t_fdf *f)
+{
+	ft_bzero(f->addr, f->ls * f->s_win.y);
+}
+
 void	ft_put_pixel(t_fdf *f, int x, int y, int rgb)
 {
 	char	*pxl;
