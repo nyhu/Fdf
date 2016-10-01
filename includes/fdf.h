@@ -8,6 +8,8 @@
 # include <stdio.h>
 # include <math.h>
 # include "libft.h"
+# define WIN_L                            1820
+# define WIN_H                            980
 # define XK_BackSpace                     0xff08
 # define XK_Tab                           0xff09
 # define XK_Linefeed                      0xff0a
