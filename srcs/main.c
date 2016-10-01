@@ -10,6 +10,10 @@ static int	ft_handle_hook(int keycode, t_fdf *f)
 		ft_zoom(f, '+');
 	else if (keycode == XK_Down)
 		ft_zoom(f, '-');
+	else if (keycode == XK_Left)
+		ft_rotate(f, '-');
+	else if (keycode == XK_Right)
+		ft_rotate(f, '+');
 	else
 		ft_zoom(f, (char)keycode);
 	ft_img_reset(f);

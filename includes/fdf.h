@@ -71,6 +71,7 @@ typedef struct	s_conf
 	t_c			s_win;
 	void		*img;
 	char		*addr;
+	double		angle;
 	int			bpp;
 	int			ls;
 	int			endian;
@@ -81,6 +82,7 @@ typedef struct	s_conf
 	t_conf		cf;
 }				t_fdf;
 
+void	ft_rotate(t_fdf *f, char c);
 void	ft_zoom(t_fdf *f, char c);
 void	ft_img_reset(t_fdf *f);
 char	*ft_parse_file(char	*file, t_fdf *f);

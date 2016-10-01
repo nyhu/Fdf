@@ -1,5 +1,13 @@
 #include "fdf.h"
 
+void	ft_rotate(t_fdf *f, char c)
+{
+	if (c == '+')
+		f->angle += 0.05;
+	if (c == '-')
+		f->angle -= 0.05;
+}
+
 void	ft_zoom(t_fdf *f, char c)
 {
 	if (c == '+')
