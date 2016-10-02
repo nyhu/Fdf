@@ -10,6 +10,18 @@
 # include "libft.h"
 # define WIN_L                            1820
 # define WIN_H                            980
+# define COLOR_N 00000001
+# define COLOR_B 00000002
+# define COLOR_V 00000004
+# define COLOR_M 00000007
+# define PROJ_I  00000010
+# define PROJ_O  00000020
+# define PROJ_P  00000040
+# define PROJ_M  00000070
+# define FACE_H  00000100
+# define FACE_G  00000200
+# define FACE_F  00000400
+# define FACE_M  00000700
 # define XK_BackSpace                     0xff08
 # define XK_Tab                           0xff09
 # define XK_Linefeed                      0xff0a
@@ -51,7 +63,7 @@ typedef struct	s_c
 
 typedef struct	s_dot
 {
-	short		exist;
+	char		exist;
 	t_c			c;
 	t_cd		p;
 	t_cd		f;
@@ -60,6 +72,7 @@ typedef struct	s_dot
 
 typedef struct	s_conf
 {
+	int			mode;
 	t_cd		margin;
 	t_cd		space;
 }				t_conf;
@@ -82,8 +95,11 @@ typedef struct	s_conf
 	t_conf		cf;
 }				t_fdf;
 
+void	ft_dot_place_dimetric(t_fdf *f, t_dot *d);
+void	ft_dot_place_isometric(t_fdf *f, t_dot *d);
+void	ft_dot_place_pers(t_fdf *f, t_dot *d);
 void	ft_rotate(t_fdf *f, char c);
-void	ft_zoom(t_fdf *f, char c);
+void	ft_config(t_fdf *f, int c);
 void	ft_img_reset(t_fdf *f);
 char	*ft_parse_file(char	*file, t_fdf *f);
 int		ft_free_fdf(t_fdf *f);

@@ -6,13 +6,13 @@ SRCS = $(foreach S, $(SRC), srcs/$(S))
 OBJ = $(SRCS:.c=.o)
 TERMCAPS = -lm -lncurses
 MLX = -lX11 -lXext -lmlx -lm
-HEAD = -I libft/includes -I includes -I /usr/include/X11
+HEAD = -I libft/includes -I includes
 OS = $(shell uname -s)
 MC = $(foreach L, $(LIB), make -C $(L) ;)
 MCA = $(foreach L, $(LIB), make -C $(L) $@;)
 LIB = libft
 SRC = main.c \
-	free.c parse.c win_fill.c utils.c img_work.c config.c zoom.c
+	free.c parse.c win_fill.c utils.c img_work.c config.c pers.c
 
 ifeq ($(OS), Linux)
 	FLAGS += -D LINUX

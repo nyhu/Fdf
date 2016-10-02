@@ -6,16 +6,10 @@ static int	ft_handle_hook(int keycode, t_fdf *f)
 		ft_free_fdf(f);
 	else if (keycode == XK_BackSpace)
 		ft_cf_reset(f);
-	else if (keycode == XK_Up)
-		ft_zoom(f, '+');
-	else if (keycode == XK_Down)
-		ft_zoom(f, '-');
-	else if (keycode == XK_Left)
-		ft_rotate(f, '-');
-	else if (keycode == XK_Right)
-		ft_rotate(f, '+');
+	else if (keycode == XK_Left || keycode == XK_Right)
+		ft_rotate(f, keycode == XK_Left ? '-' : '+');
 	else
-		ft_zoom(f, (char)keycode);
+		ft_config(f, keycode);
 	ft_img_reset(f);
 	ft_win_fill(f);
 	return (1);

@@ -1,33 +1,4 @@
 #include "fdf.h"
-/*
-static void	ft_dot_place_iso(t_fdf *f, t_dot *d)
-{
-	int		test;
-
-	test = f->max.z - f->min;
-	d->p.x = (d->c.x - (f->max.x / 2)) * f->cf.space.x;
-	d->p.y = (d->c.y - (f->max.y / 2)) * f->cf.space.y;
-	d->p.z = (d->c.z - (test / 2)) * f->cf.space.z;
-	d->f.x = f->cf.margin.x + (sqrt(2) / 2) * (d->p.x - d->p.y);
-	d->f.y = f->cf.margin.y + (1 / sqrt(6)) * (d->p.x + d->p.y);
-	d->f.y -= sqrt((float)2 / 3) * d->p.z;
-	d->f.z = 0x00FFFFFF * (test ? (float)((d->c.z - f->min)) / test : 1);
-	d->f.z += (d->f.z > 0x00000044 ? 0 : 0x00000044);
-}*/
-static void	ft_dot_place_iso(t_fdf *f, t_dot *d)
-{
-	int		test;
-
-	test = f->max.z - f->min;
-	d->p.x = (d->c.x - (f->max.x / 2)) * f->cf.space.x;
-	d->p.y = (d->c.y - (f->max.y / 2)) * f->cf.space.y;
-	d->p.z = (d->c.z - (test / 2)) * f->cf.space.z;
-	d->f.x = f->cf.margin.x + cos(f->angle) * d->p.x - sin(f->angle) * d->p.y;
-	d->f.y = f->cf.margin.y + sin(f->angle) * d->p.x + cos(f->angle) * d->p.y;
-	d->f.y -= sqrt((float)2 / 3) * d->p.z;
-	d->f.z = 0x00FFFFFF * (test ? (float)((d->c.z - f->min)) / test : 1);
-	d->f.z += (d->f.z > 0x00000044 ? 0 : 0x00000044);
-}
 
 static int	ft_color(double z)
 {
@@ -86,7 +57,12 @@ static void	ft_node_line(t_fdf *f, t_dot *d)
 
 int			ft_win_fill(t_fdf *f)
 {
-	ft_run_dot(f, &ft_dot_place_iso);
+	if (f->cf.mode & PROJ_I)
+		ft_run_dot(f, &ft_dot_place_isometric);
+	else if (f->cf.mode & PROJ_O)
+		ft_run_dot(f, &ft_dot_place_dimetric);
+	else
+		ft_run_dot(f, &ft_dot_place_pers);
 	ft_run_dot(f, &ft_node_line);
 	mlx_clear_window(f->mlx, f->win);
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
