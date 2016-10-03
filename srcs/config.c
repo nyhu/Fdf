@@ -8,6 +8,17 @@ void		ft_rotate(t_fdf *f, char c)
 		f->angle -= 0.05;
 }
 
+static void	ft_config_next_next(t_fdf *f, int c)
+{
+	if (c == 'h')
+		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_H;
+	else if (c == 'g')
+		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_G;
+	else if (c == 'f')
+		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_F;
+
+}
+
 static void	ft_config_next(t_fdf *f, int c)
 {
 	if (c == 'a')
@@ -26,6 +37,14 @@ static void	ft_config_next(t_fdf *f, int c)
 		f->cf.mode = f->cf.mode - (f->cf.mode & PROJ_M) + PROJ_O;
 		f->angle = atan(0.5);
 	}
+	else if (c == 'n')
+		f->cf.mode = f->cf.mode - (f->cf.mode & COLOR_M) + COLOR_N;
+	else if (c == 'b')
+		f->cf.mode = f->cf.mode - (f->cf.mode & COLOR_M) + COLOR_B;
+	else if (c == 'v')
+		f->cf.mode = f->cf.mode - (f->cf.mode & COLOR_M) + COLOR_V;
+	else
+		ft_config_next_next(f, c);
 }
 
 void		ft_config(t_fdf *f, int c)
@@ -59,7 +78,7 @@ int			ft_cf_reset(t_fdf *f)
 	int		test;
 
 	test = f->max.z - f->min;
-	f->cf.mode = COLOR_B | PROJ_O | FACE_H;
+	f->cf.mode = COLOR_V | PROJ_O | FACE_H;
 	f->s_win.x = WIN_L;
 	f->s_win.y = WIN_H;
 	f->angle = atan(0.5);

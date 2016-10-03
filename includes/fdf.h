@@ -95,6 +95,7 @@ typedef struct	s_conf
 	t_conf		cf;
 }				t_fdf;
 
+int		ft_color(t_fdf *f, double z);
 void	ft_dot_place_dimetric(t_fdf *f, t_dot *d);
 void	ft_dot_place_isometric(t_fdf *f, t_dot *d);
 void	ft_dot_place_pers(t_fdf *f, t_dot *d);
