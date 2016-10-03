@@ -86,9 +86,9 @@ int			ft_cf_reset(t_fdf *f)
 	f->angle = atan(0.5);
 	f->cf.margin.x = f->s_win.x / 2;
 	f->cf.margin.y = f->s_win.y / 2;
-	f->cf.space.x = pow(f->s_win.x / f->max.x, 2);
-	f->cf.space.x += pow(f->s_win.y / f->max.y, 1.25);
-	f->cf.space.x += pow(f->s_win.y / test, 1.25);
+	f->cf.space.x = pow(f->s_win.x / (f->max.x ? f->max.x : 1), 2);
+	f->cf.space.x += pow(f->s_win.y / (f->max.y ? f->max.y : 1), 1.25);
+	f->cf.space.x += pow(f->s_win.y / (test ? test : 1), 1.25);
 	f->cf.space.x = sqrt(f->cf.space.x) / 3.5;
 	f->cf.space.y = f->cf.space.x;
 	f->cf.space.z = f->cf.space.y / 2;
