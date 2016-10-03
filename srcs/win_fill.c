@@ -1,4 +1,5 @@
 #include "fdf.h"
+
 static void	ft_cover_line(t_fdf *f, t_dot *d1, t_dot *d2)
 {
 	t_dot	w;
@@ -82,5 +83,8 @@ int			ft_win_fill(t_fdf *f)
 	ft_run_dot(f, &ft_node_line);
 	mlx_clear_window(f->mlx, f->win);
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+	ft_img_reset(f);
+	if (f->cf.mode & LOOP)
+		f->angle += 0.05;
 	return (1);
 }

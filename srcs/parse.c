@@ -77,12 +77,13 @@ char		*ft_parse_file(char	*file, t_fdf *f)
 	char	**tab;
 	char	*err;
 
+	tab = NULL;
+	f->title = file;
 	if ((fd = open(file, O_RDONLY)) == -1)
 		return ("fdf: cannot open input file");
 	if (-1 == get_next_line(fd, &line))
 		err = "fdf: connot read input file";
-	else if (!(f->title = file)
-		|| !(tab = ft_read_file(fd, line)))
+	else if (!(tab = ft_read_file(fd, line)))
 		err = "fdf: malloc error";
 	else if (!(err = ft_split_lines(f, tab)) && !(f->max.x))
 		err = "fdf: map error";

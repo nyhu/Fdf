@@ -5,24 +5,25 @@ FLAGS = -Wall -Wextra -Werror
 SRCS = $(foreach S, $(SRC), srcs/$(S))
 OBJ = $(SRCS:.c=.o)
 TERMCAPS = -lm -lncurses
-MLX = -lX11 -lXext -lmlx -lm
+MLX = -lmlx -lm
 HEAD = -I libft/includes -I includes
 OS = $(shell uname -s)
-MC = $(foreach L, $(LIB), make -C $(L) ;)
-MCA = $(foreach L, $(LIB), make -C $(L) $@;)
 LIB = libft
+LMLX =
 SRC = main.c \
 	free.c parse.c win_fill.c utils.c img_work.c config.c pers.c color.c
 
 ifeq ($(OS), Linux)
 	FLAGS += -D LINUX
-	LIB += minilibx
 	MLX += -L minilibx -L /usr/lib/x86_64-linux-gnu -l X11 -l Xext
+	MLX += -lX11 -lXext -lm
+	LMLX += minilibx
 	HEAD += -I minilibx
 else
-	LIB += minilibx_macos
-	MLX += -L minilibx_macosx
+	MLX += -L minilibx_macos
+	LMLX += minilibx_macos
 	HEAD += -I minilibx_macos
+	MLX += -framework Opengl -framework Appkit
 endif
 
 all: lib $(NAME)
@@ -31,18 +32,20 @@ $(NAME): $(OBJ)
 	gcc $(FLAGS) $(HEAD) $^ -L libft -l ft -o $@ $(MLX)
 
 %.o: %.c libft/libft.a
-	gcc $(FLAGS) $(HEAD) -c $< -o $@ $(MLX)
+	gcc $(FLAGS) $(HEAD) -c $< -o $@
 
 lib:
-	$(MC)
+	make -C $(LIB)
+	make -C $(LMLX)
 
 clean:
 	rm -f $(OBJ)
-	$(MCA)
+	make clean -C $(LIB)
+	make clean -C $(LMLX)
 
 fclean: clean
 	rm -f $(NAME)
-	$(MCA)
+	make clean -C $(LIB)
 
 re: fclean all
 

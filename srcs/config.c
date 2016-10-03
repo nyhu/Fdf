@@ -10,38 +10,40 @@ void		ft_rotate(t_fdf *f, char c)
 
 static void	ft_config_next_next(t_fdf *f, int c)
 {
-	if (c == 'h')
+	if (c == XK_H)
 		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_H;
-	else if (c == 'g')
+	else if (c == XK_G)
 		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_G;
-	else if (c == 'f')
+	else if (c == XK_F)
 		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_F;
+	else if (c == XK_L)
+		f->cf.mode = f->cf.mode ^ LOOP;
 
 }
 
 static void	ft_config_next(t_fdf *f, int c)
 {
-	if (c == 'a')
+	if (c == XK_A)
 		f->cf.margin.x *= 1.1;
-	else if (c == 'q')
+	else if (c == XK_Q)
 		f->cf.margin.x /= 1.1;
-	else if (c == 'i')
+	else if (c == XK_I)
 		f->cf.mode = f->cf.mode - (f->cf.mode & PROJ_M) + PROJ_I;
-	else if (c == 'p')
+	else if (c == XK_P)
 	{
 		f->cf.mode = f->cf.mode - (f->cf.mode & PROJ_M) + PROJ_P;
 		f->angle = 0;
 	}
-	else if (c == 'o')
+	else if (c == XK_O)
 	{
 		f->cf.mode = f->cf.mode - (f->cf.mode & PROJ_M) + PROJ_O;
 		f->angle = atan(0.5);
 	}
-	else if (c == 'n')
+	else if (c == XK_N)
 		f->cf.mode = f->cf.mode - (f->cf.mode & COLOR_M) + COLOR_N;
-	else if (c == 'b')
+	else if (c == XK_B)
 		f->cf.mode = f->cf.mode - (f->cf.mode & COLOR_M) + COLOR_B;
-	else if (c == 'v')
+	else if (c == XK_V)
 		f->cf.mode = f->cf.mode - (f->cf.mode & COLOR_M) + COLOR_V;
 	else
 		ft_config_next_next(f, c);
@@ -61,13 +63,13 @@ void		ft_config(t_fdf *f, int c)
 		f->cf.space.y /= 1.1;
 		f->cf.space.z /= 1.1;
 	}
-	else if (c == 'z')
+	else if (c == XK_Z)
 		f->cf.space.z *= 1.1;
-	else if (c == 's')
+	else if (c == XK_S)
 		f->cf.space.z /= 1.1;
-	else if (c == 'e')
+	else if (c == XK_E)
 		f->cf.margin.y /= 1.1;
-	else if (c == 'd')
+	else if (c == XK_D)
 		f->cf.margin.y *= 1.1;
 	else
 		ft_config_next(f, c);
