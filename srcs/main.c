@@ -32,7 +32,7 @@ int			main(int ac, char **av)
 	else
 	{
 		mlx_expose_hook(f.win, ft_put_img_to_win, &f);
-		mlx_hook(f.win, 2, 1, ft_handle_hook, &f);
+		mlx_hook(f.win, 2, 1L << 0, ft_handle_hook, &f);
 		mlx_loop_hook(f.mlx, ft_win_fill, &f);
 		mlx_loop(f.mlx);
 	}
