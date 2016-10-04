@@ -9,7 +9,8 @@ static char	**ft_read_file(int fd, char *line)
 	res = NULL;
 	while ((tab = ft_strtabadd(res, line)))
 	{
-		ft_freegiveone((void**)&res);
+		if (tab != res)
+			ft_freegiveone((void**)&res);
 		res = tab;
 		if (!get_next_line(fd, &line))
 			return (res);
@@ -24,7 +25,7 @@ static char	*ft_fill_dots(t_fdf *f, char **t, int i)
 	int		j;
 
 	j = -1;
-	while (t[++j] && j <= (f->max.x + 48))
+	while (t[++j] && j <= (f->max.x + 3))
 	{
 		f->map[i][j].exist = 1;
 		f->map[i][j].c.x = j;
@@ -45,7 +46,7 @@ static char	*ft_split_lines(t_fdf *f, char **tab)
 	char	**t;
 	char	*err;
 	int		i;
-
+	
 	i = 0;
 	if (0 >= (f->max.y = ft_strtablen(tab)))
 		return ("fdf: map error");
@@ -54,7 +55,7 @@ static char	*ft_split_lines(t_fdf *f, char **tab)
 	if (!(t = ft_strsplit(tab[i], ' ')))
 		return ("fdf: malloc error");
 	f->max.x = ft_strtablen(t);
-	while ((f->map[i] = (t_dot *)ft_memalloc(sizeof(t_dot) * (f->max.x + 50))))
+	while ((f->map[i] = (t_dot *)ft_memalloc(sizeof(t_dot) * (f->max.x + 4))))
 	{
 		if ((err = ft_fill_dots(f, t, i)))
 		{
