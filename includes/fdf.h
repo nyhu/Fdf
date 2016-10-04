@@ -77,6 +77,7 @@ typedef struct	s_conf
 	t_conf		cf;
 }				t_fdf;
 
+int		ft_put_img_to_win(t_fdf *f);
 void	ft_print_line(t_fdf *f, t_dot *d1, t_dot *d2, int color);
 int		ft_color(t_fdf *f, double z);
 void	ft_dot_place_dimetric(t_fdf *f, t_dot *d);

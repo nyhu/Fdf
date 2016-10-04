@@ -84,14 +84,15 @@ int			ft_win_fill(t_fdf *f)
 		ft_run_dot(f, &ft_dot_place_dimetric);
 	else
 		ft_run_dot(f, &ft_dot_place_pers);
+	ft_img_reset(f);
 	if (f->cf.mode & FACE_H)
 		ft_run_dot(f, &ft_node_line);
 	else
 		ft_run_dot(f, &ft_node_face);
-	mlx_clear_window(f->mlx, f->win);
-	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
-	ft_img_reset(f);
 	if (f->cf.mode & LOOP)
 		f->angle += 0.05;
+	if (!LINUX)
+		mlx_clear_window(f->mlx, f->win);
+	ft_put_img_to_win(f);
 	return (1);
 }

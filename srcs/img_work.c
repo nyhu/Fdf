@@ -1,5 +1,15 @@
 #include "fdf.h"
 
+int		ft_put_img_to_win(t_fdf *f)
+{
+	if (f->img)
+	{
+		mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+		return (1);
+	}
+	return (0);
+}
+
 void	ft_img_reset(t_fdf *f)
 {
 	ft_bzero(f->addr, f->ls * f->s_win.y);
