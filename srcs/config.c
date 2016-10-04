@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   config.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/04 16:20:09 by tboos             #+#    #+#             */
+/*   Updated: 2016/10/04 16:31:16 by tboos            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void		ft_rotate(t_fdf *f, char c)
@@ -18,7 +30,6 @@ static void	ft_config_next_next(t_fdf *f, int c)
 		f->cf.mode = f->cf.mode - (f->cf.mode & FACE_M) + FACE_F;
 	else if (c == XK_L)
 		f->cf.mode = f->cf.mode ^ LOOP;
-
 }
 
 static void	ft_config_next(t_fdf *f, int c)

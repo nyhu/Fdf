@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/04 16:20:32 by tboos             #+#    #+#             */
+/*   Updated: 2016/10/04 16:30:47 by tboos            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 static char	**ft_read_file(int fd, char *line)
@@ -37,8 +49,11 @@ static char	*ft_fill_dots(t_fdf *f, char **t, int i)
 			f->min = f->map[i][j].c.z;
 	}
 	if (t[j])
+	{
+		ft_strtabfree(t);
 		return ("fdf: map error");
-	return NULL;
+	}
+	return (NULL);
 }
 
 static char	*ft_split_lines(t_fdf *f, char **tab)
@@ -46,7 +61,7 @@ static char	*ft_split_lines(t_fdf *f, char **tab)
 	char	**t;
 	char	*err;
 	int		i;
-	
+
 	i = 0;
 	if (0 >= (f->max.y = ft_strtablen(tab)))
 		return ("fdf: map error");
@@ -58,20 +73,17 @@ static char	*ft_split_lines(t_fdf *f, char **tab)
 	while ((f->map[i] = (t_dot *)ft_memalloc(sizeof(t_dot) * (f->max.x + 4))))
 	{
 		if ((err = ft_fill_dots(f, t, i)))
-		{
-			ft_strtabfree(t);
 			return (err);
-		}
 		ft_strtabfree(t);
 		if (++i == f->max.y)
 			break ;
 		if (!(t = ft_strsplit(tab[i], ' ')))
 			return ("fdf: malloc error");
 	}
-	return NULL;
+	return (NULL);
 }
 
-char		*ft_parse_file(char	*file, t_fdf *f)
+char		*ft_parse_file(char *file, t_fdf *f)
 {
 	int		fd;
 	char	*line;

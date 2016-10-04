@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/04 16:46:26 by tboos             #+#    #+#             */
+/*   Updated: 2016/10/04 16:52:42 by tboos            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H
 
@@ -59,7 +71,7 @@ typedef struct	s_conf
 	t_cd		space;
 }				t_conf;
 
- typedef struct	s_fdf
+typedef struct	s_fdf
 {
 	void		*mlx;
 	void		*win;
@@ -77,20 +89,20 @@ typedef struct	s_conf
 	t_conf		cf;
 }				t_fdf;
 
-int		ft_put_img_to_win(t_fdf *f);
-void	ft_print_line(t_fdf *f, t_dot *d1, t_dot *d2, int color);
-int		ft_color(t_fdf *f, double z);
-void	ft_dot_place_dimetric(t_fdf *f, t_dot *d);
-void	ft_dot_place_isometric(t_fdf *f, t_dot *d);
-void	ft_dot_place_pers(t_fdf *f, t_dot *d);
-void	ft_rotate(t_fdf *f, char c);
-void	ft_config(t_fdf *f, int c);
-void	ft_img_reset(t_fdf *f);
-char	*ft_parse_file(char	*file, t_fdf *f);
-int		ft_free_fdf(t_fdf *f);
-int		ft_win_fill(t_fdf *f);
-void	ft_run_dot(t_fdf *f, void (*ft)(t_fdf *f, t_dot *dot));
-void	ft_put_pixel(t_fdf *f, int x, int y, int rgb);
-int		ft_cf_reset(t_fdf *f);
+int				ft_put_img_to_win(t_fdf *f);
+void			ft_print_line(t_fdf *f, t_dot *d1, t_dot *d2, int color);
+int				ft_color(t_fdf *f, double z);
+void			ft_dot_place_dimetric(t_fdf *f, t_dot *d);
+void			ft_dot_place_isometric(t_fdf *f, t_dot *d);
+void			ft_dot_place_pers(t_fdf *f, t_dot *d);
+void			ft_rotate(t_fdf *f, char c);
+void			ft_config(t_fdf *f, int c);
+void			ft_img_reset(t_fdf *f);
+char			*ft_parse_file(char	*file, t_fdf *f);
+int				ft_free_fdf(t_fdf *f);
+int				ft_win_fill(t_fdf *f);
+void			ft_run_dot(t_fdf *f, void (*ft)(t_fdf *f, t_dot *dot));
+void			ft_put_pixel(t_fdf *f, int x, int y, int rgb);
+int				ft_cf_reset(t_fdf *f);
 
 #endif
