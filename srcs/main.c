@@ -31,9 +31,9 @@ int			main(int ac, char **av)
 		ft_putendl("fdf: error while initializing windows with mlx");
 	else
 	{
-		mlx_expose_hook(f.win, ft_put_img_to_win, &f);
-		mlx_hook(f.win, 2, 1L << 0, ft_handle_hook, &f);
+//		mlx_expose_hook(f.win, ft_put_img_to_win, &f);
 		mlx_loop_hook(f.mlx, ft_win_fill, &f);
+		mlx_hook(f.win, 2, 1L << 0, ft_handle_hook, &f);
 		mlx_loop(f.mlx);
 	}
 	ft_free_fdf(&f);
