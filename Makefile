@@ -45,7 +45,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	make clean -C $(LIB)
+	make fclean -C $(LIB)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:19:28 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/07 19:53:35 by tboos            ###   ########.fr       */
+/*   Updated: 2016/10/07 20:39:52 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static int	ft_color_b(double z)
 
 	if (z < 0.05)
 		color = 0x000000FF;
-	else if (z < 0.5)
-		color = 0x0000FF00;
-	else if (z < 0.9)
+	else if (z < 0.6)
 		color = 0x00FF0000 + 0x0000FF00;
+	else if (z < 0.9)
+		color = 0x0000FF00;
 	else
 		color = 0x00FFFFFF;
 	return (color);
