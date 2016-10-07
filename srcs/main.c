@@ -6,7 +6,7 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:20:27 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/04 16:23:22 by tboos            ###   ########.fr       */
+/*   Updated: 2016/10/07 16:19:53 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static int	ft_handle_hook(int keycode, t_fdf *f)
 {
-	if (keycode == XK_Escape)
+	if (keycode == XK_ESPACE)
 		ft_free_fdf(f);
-	else if (keycode == XK_BackSpace)
+	else if (keycode == XK_BACKSPACE)
 		ft_cf_reset(f);
-	else if (keycode == XK_Left || keycode == XK_Right)
-		ft_rotate(f, keycode == XK_Left ? '-' : '+');
+	else if (keycode == XK_LEFT || keycode == XK_RIGHT)
+		ft_rotate(f, keycode == XK_LEFT ? '-' : '+');
 	else
 		ft_config(f, keycode);
 	return (1);

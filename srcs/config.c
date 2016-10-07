@@ -6,7 +6,7 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:20:09 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/04 16:31:16 by tboos            ###   ########.fr       */
+/*   Updated: 2016/10/07 16:20:42 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ static void	ft_config_next(t_fdf *f, int c)
 
 void		ft_config(t_fdf *f, int c)
 {
-	if (c == XK_Up)
+	if (c == XK_UP)
 	{
 		f->cf.space.x *= 1.1;
 		f->cf.space.y *= 1.1;
 		f->cf.space.z *= 1.1;
 	}
-	else if (c == XK_Down)
+	else if (c == XK_DOWN)
 	{
 		f->cf.space.x /= 1.1;
 		f->cf.space.y /= 1.1;
