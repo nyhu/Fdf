@@ -6,7 +6,7 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:20:27 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/07 16:19:53 by tboos            ###   ########.fr       */
+/*   Updated: 2016/10/07 16:23:03 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int			main(int ac, char **av)
 		ft_putendl("fdf: error while initializing windows with mlx");
 	else
 	{
-//		mlx_expose_hook(f.win, ft_put_img_to_win, &f);
 		mlx_loop_hook(f.mlx, ft_win_fill, &f);
 		mlx_hook(f.win, 2, 1L << 0, ft_handle_hook, &f);
 		mlx_loop(f.mlx);

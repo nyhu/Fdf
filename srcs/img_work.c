@@ -6,7 +6,7 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:20:22 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/04 16:20:24 by tboos            ###   ########.fr       */
+/*   Updated: 2016/10/07 18:49:59 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ void	ft_print_line(t_fdf *f, t_dot *d1, t_dot *d2, int c)
 		w.p.x /= tmp;
 		w.p.y /= tmp;
 		w.p.z = (d2->f.z - w.f.z) / tmp;
-		while (tmp-- >= 0)
+		ft_put_pixel(f, w.f.x, w.f.y, ft_color(f, w.f.z));
+		while (--tmp > 0)
 		{
 			ft_put_pixel(f, w.f.x, w.f.y, c < 0 ? ft_color(f, w.f.z) : c);
 			w.f.x += w.p.x;
 			w.f.y += w.p.y;
 			w.f.z += w.p.z;
 		}
+		ft_put_pixel(f, w.f.x, w.f.y, ft_color(f, w.f.z));
 	}
 }
