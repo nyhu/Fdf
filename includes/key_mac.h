@@ -1,13 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_mac.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/10/04 16:47:22 by tboos             #+#    #+#             */
+/*   Updated: 2016/10/04 16:50:05 by tboos            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef KEY_MAC_H
 # define KEY_MAC_H
-# define XK_BackSpace                     0x33
-# define XK_Return                        0x24
-# define XK_Escape                        0x35
-# define XK_Home                          0x73
-# define XK_Left                          0x7B
-# define XK_Up                            0x7E
-# define XK_Right                         0x7C
-# define XK_Down                          0x7D
+
+# define XK_BACKSPACE 0x33
+# define XK_RETURN 0x24
+# define XK_ESPACE 0x35
+# define XK_HOME 0x73
+# define XK_LEFT 0x7B
+# define XK_UP 0x7E
+# define XK_RIGHT 0x7C
+# define XK_DOWN 0x7D
 # define XK_Z 0x0D
 # define XK_S 1
 # define XK_E 0x0E
