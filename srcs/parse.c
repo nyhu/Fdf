@@ -6,11 +6,22 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:20:32 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/04 16:30:47 by tboos            ###   ########.fr       */
+/*   Updated: 2017/01/12 17:42:47 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	ft_good_format(char *line)
+{
+	while (*line)
+	{
+		if (!ft_isprint(*line))
+			return (0);
+		++line;
+	}
+	return (1);
+}
 
 static char	**ft_read_file(int fd, char *line)
 {
@@ -19,6 +30,8 @@ static char	**ft_read_file(int fd, char *line)
 
 	tab = NULL;
 	res = NULL;
+	if (!ft_good_format(line) && ft_freegiveone((void**)&line))
+		return (NULL);
 	while ((tab = ft_strtabadd(res, line)))
 	{
 		if (tab != res)
@@ -97,7 +110,7 @@ char		*ft_parse_file(char *file, t_fdf *f)
 	if (-1 == get_next_line(fd, &line))
 		err = "fdf: connot read input file";
 	else if (!(tab = ft_read_file(fd, line)))
-		err = "fdf: malloc error";
+		err = "fdf: format error";
 	else if (!(err = ft_split_lines(f, tab)) && !(f->max.x))
 		err = "fdf: map error";
 	ft_strtabfree(tab);

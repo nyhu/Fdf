@@ -6,7 +6,7 @@
 /*   By: tboos <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 16:20:27 by tboos             #+#    #+#             */
-/*   Updated: 2016/10/07 16:23:03 by tboos            ###   ########.fr       */
+/*   Updated: 2017/01/10 13:50:04 by tboos            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			main(int ac, char **av)
 		mlx_hook(f.win, 2, 1L << 0, ft_handle_hook, &f);
 		mlx_loop(f.mlx);
 	}
+	get_next_line(-1, NULL);
 	ft_free_fdf(&f);
 	return (0);
 }
